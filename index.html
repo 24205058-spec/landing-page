@@ -1,227 +1,85 @@
+// Navigation scroll effect
+window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechConnect 2023 | Interactive Navigation Demo</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <!-- Navigation Menu -->
-    <nav class="navbar">
-        <a href="#" class="logo">
-            <i class="fas fa-microphone-alt"></i>TechConnect 2023
-        </a>
-        <div class="menu-toggle" id="menuToggle">
-            <i class="fas fa-bars"></i>
-        </div>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#speakers">Speakers</a></li>
-            <li><a href="#schedule">Schedule</a></li>
-            <li><a href="#register" class="btn">Register Now</a></li>
-        </ul>
-    </nav>
+// Mobile menu toggle
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <h1>TechConnect 2023</h1>
-        <p>Join the leading technology conference of the year. Connect with innovators, learn from experts, and shape the future of technology.</p>
-        <a href="#register" class="btn">Register Now</a>
-    </section>
+menuToggle.addEventListener('click', function() {
+    navLinks.classList.toggle('active');
+});
 
-    <!-- About Section -->
-    <section id="about">
-        <div class="section-title">
-            <h2>About The Conference</h2>
-            <p>Discover what makes TechConnect the premier technology event of the year</p>
-        </div>
-        <div class="about-content">
-            <div class="about-text">
-                <h3>Where Innovation Meets Opportunity</h3>
-                <p>TechConnect 2023 brings together the brightest minds in technology for three days of inspiration, education, and networking. Our conference features cutting-edge presentations, hands-on workshops, and unparalleled networking opportunities.</p>
-                <p>This year's theme, "The Future is Now," explores how emerging technologies are transforming industries and creating new possibilities for innovation and growth.</p>
-                <p>Whether you're a seasoned professional or just starting your tech journey, TechConnect offers valuable insights and connections to help you thrive in the digital age.</p>
-                <a href="#register" class="btn" style="margin-top: 20px;">Join Us</a>
-            </div>
-            <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Conference Audience">
-            </div>
-        </div>
-    </section>
+// Close mobile menu when clicking on a link
+const navItems = document.querySelectorAll('.nav-links a');
+navItems.forEach(item => {
+    item.addEventListener('click', function() {
+        if (window.innerWidth <= 768) {
+            navLinks.classList.remove('active');
+        }
+    });
+});
 
-    <!-- Speakers Section -->
-    <section id="speakers">
-        <div class="section-title">
-            <h2>Featured Speakers</h2>
-            <p>Learn from industry leaders and visionaries</p>
-        </div>
-        <div class="speakers-grid">
-            <div class="speaker-card">
-                <div class="speaker-image">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Speaker 1">
-                </div>
-                <div class="speaker-info">
-                    <h3>Alex Johnson</h3>
-                    <p>CTO, InnovateTech</p>
-                    <p>Topic: The Future of AI in Business</p>
-                </div>
-            </div>
-            <div class="speaker-card">
-                <div class="speaker-image">
-                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Speaker 2">
-                </div>
-                <div class="speaker-info">
-                    <h3>Maria Rodriguez</h3>
-                    <p>Lead Data Scientist, DataCorp</p>
-                    <p>Topic: Data-Driven Decision Making</p>
-                </div>
-            </div>
-            <div class="speaker-card">
-                <div class="speaker-image">
-                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Speaker 3">
-                </div>
-                <div class="speaker-info">
-                    <h3>David Chen</h3>
-                    <p>Founder, FutureLabs</p>
-                    <p>Topic: Blockchain Revolution</p>
-                </div>
-            </div>
-            <div class="speaker-card">
-                <div class="speaker-image">
-                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Speaker 4">
-                </div>
-                <div class="speaker-info">
-                    <h3>Sarah Williams</h3>
-                    <p>VP of Engineering, TechSolutions</p>
-                    <p>Topic: Sustainable Tech Solutions</p>
-                </div>
-            </div>
-        </div>
-    </section>
+// Schedule tabs functionality
+const tabBtns = document.querySelectorAll('.tab-btn');
+const scheduleDays = document.querySelectorAll('.schedule-day');
 
-    <!-- Schedule Section -->
-    <section id="schedule">
-        <div class="section-title">
-            <h2>Conference Schedule</h2>
-            <p>Plan your TechConnect experience</p>
-        </div>
-        <div class="schedule-tabs">
-            <button class="tab-btn active" data-day="day1">Day 1</button>
-            <button class="tab-btn" data-day="day2">Day 2</button>
-            <button class="tab-btn" data-day="day3">Day 3</button>
-        </div>
-        <div class="schedule-content">
-            <div class="schedule-day active" id="day1">
-                <div class="schedule-item">
-                    <div class="schedule-time">9:00 AM - 10:00 AM</div>
-                    <div class="schedule-details">
-                        <h4>Opening Keynote: The Future of Technology</h4>
-                        <p>Alex Johnson, CTO of InnovateTech</p>
-                    </div>
-                </div>
-                <div class="schedule-item">
-                    <div class="schedule-time">10:30 AM - 12:00 PM</div>
-                    <div class="schedule-details">
-                        <h4>AI and Machine Learning Workshop</h4>
-                        <p>Hands-on session with industry experts</p>
-                    </div>
-                </div>
-                <div class="schedule-item">
-                    <div class="schedule-time">1:00 PM - 2:30 PM</div>
-                    <div class="schedule-details">
-                        <h4>Data Analytics Panel</h4>
-                        <p>Leading data scientists discuss trends and challenges</p>
-                    </div>
-                </div>
-            </div>
-            <div class="schedule-day" id="day2" style="display: none;">
-                <div class="schedule-item">
-                    <div class="schedule-time">9:00 AM - 10:30 AM</div>
-                    <div class="schedule-details">
-                        <h4>Blockchain Revolution</h4>
-                        <p>David Chen, Founder of FutureLabs</p>
-                    </div>
-                </div>
-                <div class="schedule-item">
-                    <div class="schedule-time">11:00 AM - 12:30 PM</div>
-                    <div class="schedule-details">
-                        <h4>Cloud Computing Strategies</h4>
-                        <p>Optimizing your cloud infrastructure</p>
-                    </div>
-                </div>
-            </div>
-            <div class="schedule-day" id="day3" style="display: none;">
-                <div class="schedule-item">
-                    <div class="schedule-time">9:00 AM - 10:30 AM</div>
-                    <div class="schedule-details">
-                        <h4>Sustainable Tech Solutions</h4>
-                        <p>Sarah Williams, VP of Engineering at TechSolutions</p>
-                    </div>
-                </div>
-                <div class="schedule-item">
-                    <div class="schedule-time">11:00 AM - 12:30 PM</div>
-                    <div class="schedule-details">
-                        <h4>Closing Panel: The Next Decade in Tech</h4>
-                        <p>All speakers discuss future trends</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+tabBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+        // Remove active class from all buttons and days
+        tabBtns.forEach(b => b.classList.remove('active'));
+        scheduleDays.forEach(day => day.style.display = 'none');
+        
+        // Add active class to clicked button
+        this.classList.add('active');
+        
+        // Show corresponding day
+        const dayId = this.getAttribute('data-day');
+        document.getElementById(dayId).style.display = 'block';
+    });
+});
 
-    <!-- Register Section -->
-    <section id="register" style="background: #f0f5ff; padding: 80px 5%; text-align: center;">
-        <div class="section-title">
-            <h2>Register Now</h2>
-            <p>Secure your spot at the premier technology conference of the year</p>
-        </div>
-        <div style="max-width: 600px; margin: 0 auto;">
-            <p style="margin-bottom: 30px;">Join thousands of technology professionals, innovators, and thought leaders at TechConnect 2023. Early bird pricing ends soon!</p>
-            <a href="#" class="btn" style="font-size: 1.2rem; padding: 15px 40px;">Register Today</a>
-        </div>
-    </section>
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>TechConnect 2023</h3>
-                <p>Where innovation meets opportunity. Join us for the premier technology conference of the year.</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-            <div class="footer-column">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#speakers">Speakers</a></li>
-                    <li><a href="#schedule">Schedule</a></li>
-                    <li><a href="#register">Register</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Contact Us</h3>
-                <ul>
-                    <li><i class="fas fa-map-marker-alt"></i> 123 Tech Avenue, San Francisco, CA</li>
-                    <li><i class="fas fa-phone"></i> (555) 123-4567</li>
-                    <li><i class="fas fa-envelope"></i> info@techconnect2023.com</li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2023 TechConnect Conference. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
+// Add active class to current section in navigation
+window.addEventListener('scroll', function() {
+    let current = '';
+    const sections = document.querySelectorAll('section');
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= (sectionTop - 100)) {
+            current = section.getAttribute('id');
+        }
+    });
+    
+    navItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('href') === `#${current}`) {
+            item.classList.add('active');
+        }
+    });
+});
